@@ -19,11 +19,13 @@
                 <div class="col-md-2">
                     <div class="dropdown w-100">
                         <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          View as a
+                          Sorted by
                         </button>
                         <ul class="dropdown-menu sorted-buttons">
-                          <li><button class="dropdown-item" onclick="sortProduct('HighToLow')">High To Low</button></li>
-                          <li><button class="dropdown-item" onclick="sortProduct('LowToHigh')">Low To High</button></li>
+                            <li><button class="dropdown-item" onclick="sortProduct('Default')">Default</button></li>
+                          <li><button class="dropdown-item" onclick="sortProduct('HighToLow')">Price high to low</button></li>
+                          <li><button class="dropdown-item" onclick="sortProduct('LowToHigh')">Price low to high</button></li>
+                          <li><button class="dropdown-item" onclick="sortProduct('Name')">Name</button></li>
                         </ul>
                       </div>
                 </div>

@@ -68,6 +68,11 @@ function sortProduct(order) {
         sortedData.sort((a, b) => a.price - b.price);
     } else if (order === "HighToLow") {
         sortedData.sort((a, b) => b.price - a.price);
+    } else if (order === "Default"){
+        sortedData = [...productData];
+    }
+    else if (order === "Name"){
+        sortedData.sort((a, b) => a.title.localeCompare(b.title));
     }
     displayCards(sortedData); 
     filterProduct("All");
