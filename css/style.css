@@ -23,6 +23,6 @@ body{
 .hidden {
     display: none !important;
     position: absolute !important;
-    /* Width:0;
-    height:0; */
+    Width:0;
+    height:0;
 }

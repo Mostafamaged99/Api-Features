@@ -1,20 +1,18 @@
 //!=====  HTML ELEMENTS =====!\\
 const cards = document.querySelector(".cards")
 const buttons = document.querySelectorAll(".btn")
-const sortedButtons = document.querySelectorAll(".sorted-buttons")
 const searchBar = document.querySelector(".search-bar")
 //!=====  variables =====!\\
 const apiLink = 'https://fakestoreapi.com/products';
 let elements; 
 let productNames;
 let productPrices;
-let pricesArray;
-let lowToHighArray;
-let highToLowArray;
+let productData = [];
 //!=====  FUNCTIONS =====!\\
 async function getProducts() {
     const res = await fetch(apiLink)
     const data = await res.json();
+    productData = data;
     displayCards(data);
     filterProduct("All");
     console.log(data);
@@ -37,6 +35,7 @@ function displayCards(data) {
     cards.innerHTML = box;
     elements = document.querySelectorAll(".card");
     productNames = document.querySelectorAll(".product-title");
+    productPrices = document.querySelectorAll(".product-Price");
 }
 
 function filterProduct(value) {
@@ -63,6 +62,17 @@ function filterProduct(value) {
     })
 }
 
+function sortProduct(order) {
+    let sortedData = [...productData];
+    if (order === "LowToHigh") {
+        sortedData.sort((a, b) => a.price - b.price);
+    } else if (order === "HighToLow") {
+        sortedData.sort((a, b) => b.price - a.price);
+    }
+    displayCards(sortedData); 
+    filterProduct("All");
+}
+
 //!=====  EVENTS =====!\\
 searchBar.addEventListener("input", (e)=>{
     let value = e.target.value;
@@ -76,6 +86,4 @@ searchBar.addEventListener("input", (e)=>{
     })
 })
 
-// const points = [40, 100, 1, 5, 25, 10];
-// points.sort(function(a, b){return a - b});
-// console.log(points);
+
